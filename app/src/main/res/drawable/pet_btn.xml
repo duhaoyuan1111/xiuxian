@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <selector>
+            <item android:state_pressed="true">
+                <bitmap android:src="@drawable/pet_press"/>
+
+            </item>
+
+            <item android:state_pressed="false">
+                <bitmap android:src="@drawable/pet"/>
+
+            </item>
+        </selector>
+    </item>
+
+    <item>
+        <selector>
+            <item android:state_pressed="true">
+                <shape>
+                    <stroke android:color="@color/grey"
+                        android:width="1dp"/>
+                    <corners android:radius="3dp"/>
+                </shape>
+
+            </item>
+
+            <item android:state_pressed="false">
+                <shape>
+                    <stroke android:color="@color/black"
+                        android:width="1dp"/>
+                    <corners android:radius="3dp"/>
+                </shape>
+
+            </item>
+        </selector>
+
+    </item>
+</layer-list>

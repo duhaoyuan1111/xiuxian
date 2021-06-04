@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeFragment"
+    android:background="@drawable/home_bg">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PendingFriendsFragment">
+
+
+        <Button
+            android:id="@+id/user_btn_HomeFrag"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:background="@drawable/user_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/xiuLian_btn_HomeFrag"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.858" />
+
+        <Button
+            android:id="@+id/xiuLian_btn_HomeFrag"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:background="@drawable/xiulian_btn"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintVertical_bias="0.858"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bag_btn_HomeFrag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/user_btn_HomeFrag" />
+
+        <Button
+            android:id="@+id/bag_btn_HomeFrag"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:background="@drawable/bag_btn"
+            app:layout_constraintVertical_bias="0.858"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/skill_btn_HomeFrag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/xiuLian_btn_HomeFrag"
+            />
+
+        <Button
+            android:id="@+id/skill_btn_HomeFrag"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            android:background="@drawable/skill_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/pet_btn_HomeFrag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.858"
+            app:layout_constraintStart_toEndOf="@id/bag_btn_HomeFrag"
+            />
+
+        <Button
+            android:id="@+id/pet_btn_HomeFrag"
+            android:layout_width="60dp"
+            android:layout_height="38dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.858"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/skill_btn_HomeFrag"
+            android:background="@drawable/pet_btn"
+            />
+
+        <Button
+            android:id="@+id/fuben_btn_HomeFrag"
+            android:layout_width="47dp"
+            android:layout_height="90dp"
+            android:background="@drawable/fuben_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/skill_btn_HomeFrag"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.7"
+            />
+
+        <ImageView
+            android:id="@+id/user_icon_iv_HomeFrag"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:contentDescription="touxiang"
+            android:background="@drawable/female"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/user_name_frame_iv_HomeFrag"
+            app:layout_constraintVertical_bias="0.03"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fuben_btn_HomeFrag"
+
+            />
+
+        <ImageView
+            android:id="@+id/user_icon_frame_iv_HomeFrag"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/touxiangkuang"
+            android:contentDescription="touxiangkuang"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fuben_btn_HomeFrag"
+            app:layout_constraintEnd_toStartOf="@id/user_name_frame_iv_HomeFrag"
+            app:layout_constraintVertical_bias="0.01"
+            app:layout_constraintHorizontal_bias="0.01"
+            />
+
+        <ImageView
+            android:id="@+id/user_name_frame_iv_HomeFrag"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:contentDescription="xingmingkuang"
+            android:background="@drawable/xingmingkuang"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fuben_btn_HomeFrag"
+            />
+
+        <TextView
+            android:id="@+id/username_tv_HomeFrag"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="玉拂丶"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/fuben_btn_HomeFrag"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintHorizontal_bias="0.2"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
+
