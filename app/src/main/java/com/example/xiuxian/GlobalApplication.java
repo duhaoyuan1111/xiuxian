@@ -19,17 +19,18 @@ public class GlobalApplication extends AppCompatActivity {
             "分神初阶", "分神二阶", "分神三阶", "分神四阶", "分神五阶", "分神六阶", "分神七阶", "分神八阶","分神九阶", "分神巅峰",
             "合体初阶", "合体二阶", "合体三阶", "合体四阶", "合体五阶", "合体六阶", "合体七阶", "合体八阶","合体九阶", "合体巅峰",
             "渡劫初阶", "渡劫二阶", "渡劫三阶", "渡劫四阶", "渡劫五阶", "渡劫六阶", "渡劫七阶", "渡劫八阶","渡劫九阶", "渡劫巅峰",
-            "大乘初阶", "大乘二阶", "大乘三阶", "大乘四阶", "大乘五阶", "大乘六阶", "大乘七阶", "大乘八阶","大乘九阶", "大乘巅峰"};
-    private static double[] expRequire = {10, 30, 60, 60, 60, 120, 120, 180, 180, 240,
-            240, 300, 300, 300, 360, 360, 360, 360, 450, 500,
-            500, 560, 560, 560, 700, 770, 800, 850, 900, 950,
-            1200, 1500, 1800, 2100, 2400, 2400, 2400, 2700, 3000, 3000,
+            "大乘初阶", "大乘二阶", "大乘三阶", "大乘四阶", "大乘五阶", "大乘六阶", "大乘七阶", "大乘八阶","大乘九阶", "大乘巅峰", "散仙初阶"};
+    private static double[] expRequire = {10, 30, 60, 60, 120, 140, 150, 170, 180, 240,
+            270, 300, 330, 350, 370, 390, 410, 450, 470, 500,
+            530, 560, 590, 650, 700, 770, 820, 870, 940, 1000,
+            1300, 1600, 1800, 2100, 2400, 2400, 2400, 2700, 3000, 3000,
             4200, 4200, 4200, 4200, 4400, 4750, 4750, 4750, 4950, 4950,
             5300, 5600, 5900, 6000, 6300, 6600, 6900, 7400, 7600, 7800,
             8000, 8200, 8400, 8600, 8800, 9000, 9000, 9000, 9300, 9500,
             10000, 10400, 10800, 11200, 11600, 12000, 12500, 13000, 13500, 13500,
             13500, 13500, 13900, 14200, 14500, 14800, 14800, 14900, 15000, 15200,
-            15300, 15600, 15900, 16200, 16500, 16800, 17100, 17600, 19000, 20000};
+            15300, 15600, 15900, 16200, 16500, 16800, 17100, 17600, 19000, 20000, 50000};
+    private static long frozenPeriod = System.currentTimeMillis();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,11 @@ public class GlobalApplication extends AppCompatActivity {
     }
 
     public static void setIndex(int newIndex) {
-        index = newIndex;
+        if (newIndex >= 100) {
+            index = 100;
+        } else {
+            index = newIndex;
+        }
     }
 
     public static int getIndex() {
@@ -63,5 +68,13 @@ public class GlobalApplication extends AppCompatActivity {
 
     public static String getLevel(int index) {
         return level[index];
+    }
+
+    public static long getFrozenPeriod() {
+        return frozenPeriod;
+    }
+
+    public static void setFrozenPeriod(long time) {
+        frozenPeriod = time;
     }
 }

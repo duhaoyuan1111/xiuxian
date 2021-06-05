@@ -70,9 +70,9 @@ public class XiuLianFragment extends Fragment {
             public void run() {
                 if(wasRun){
                     curIndex = GlobalApplication.getIndex();
-                    mTvXiulianzhi.setText((int)GlobalApplication.getExp() + " / " + GlobalApplication.getExpRequire(curIndex));
+                    mTvXiulianzhi.setText((int)GlobalApplication.getExp() + " / " + (int)GlobalApplication.getExpRequire(curIndex));
                 }
-                mHandler.postDelayed(this, 1000);
+                mHandler.postDelayed(this, 200);
             }
         }, 50);
 
@@ -81,11 +81,11 @@ public class XiuLianFragment extends Fragment {
             public void onClick(View v) {
                 double curExpRequire = GlobalApplication.getExpRequire(GlobalApplication.getIndex());
                 curIndex = GlobalApplication.getIndex();
-                if (curExpRequire <= GlobalApplication.getExp()) {
+                if (curExpRequire <= GlobalApplication.getExp() && curIndex < 100) {
                     curIndex++;
                     GlobalApplication.setIndex(curIndex);
                     GlobalApplication.setExp(GlobalApplication.getExp() - curExpRequire);
-                    mTvLevel.setText(GlobalApplication.getLevel(curIndex));
+                    mTvLevel.setText(GlobalApplication.getLevel(GlobalApplication.getIndex()));
                     mTvSpeed.setText((int)(GlobalApplication.getExpSpeed() * 60) + " / 分钟");
                 }
             }
