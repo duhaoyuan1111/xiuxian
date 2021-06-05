@@ -13,7 +13,7 @@ public class HomeActivity extends AppCompatActivity {
     private HomeFragment homeFragment;
     private Handler mHandler = new Handler();
     private boolean wasRun = true;
-    private double exp;
+    private int exp;
     private Runnable myRunnable;
     private long frozenPeriod;
 
@@ -23,10 +23,11 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         if (SaveSharedPreference.getExp(HomeActivity.this).length() != 0) {
-            GlobalApplication.setExp(Double.parseDouble(SaveSharedPreference.getExp(HomeActivity.this)));
-            long differences = (System.currentTimeMillis() - Long.parseLong(SaveSharedPreference.getFrozenPeriod(HomeActivity.this)))  / 1000;
-            GlobalApplication.setExp(GlobalApplication.getExp() + ((int)differences * (int)GlobalApplication.getExpSpeed()));
             GlobalApplication.setIndex(Integer.parseInt(SaveSharedPreference.getIndex(HomeActivity.this)));
+            GlobalApplication.setExp(Integer.parseInt(SaveSharedPreference.getExp(HomeActivity.this)));
+            int differences = (int)(System.currentTimeMillis() - Long.parseLong(SaveSharedPreference.getFrozenPeriod(HomeActivity.this)))  / 1000;
+            GlobalApplication.setExp(GlobalApplication.getExp() + (differences * GlobalApplication.getExpSpeed(GlobalApplication.getIndex())));
+
         }
 //        Log.d("--exp--", SaveSharedPreference.getExp(HomeActivity.this));
 //        Log.d("--FrozenPeriod--", SaveSharedPreference.getFrozenPeriod(HomeActivity.this));
@@ -45,8 +46,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onResume();
 
         long curTime = System.currentTimeMillis();
-        long differences = (curTime - GlobalApplication.getFrozenPeriod()) / 1000;
-        GlobalApplication.setExp(GlobalApplication.getExp() + ((int)differences * (int)GlobalApplication.getExpSpeed()));
+        int differences = (int)(curTime - GlobalApplication.getFrozenPeriod()) / 1000;
+        GlobalApplication.setExp(GlobalApplication.getExp() + (differences * GlobalApplication.getExpSpeed(GlobalApplication.getIndex())));
 
         wasRun = true;
         myRunnable = new Runnable() {
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
                 // Things to be done
                 if (wasRun) {
                     exp = GlobalApplication.getExp();
-                    exp++;
+                    exp += GlobalApplication.getExpSpeed(GlobalApplication.getIndex());
                     GlobalApplication.setExp(exp);
                 }
                 mHandler.postDelayed(this, 1000);

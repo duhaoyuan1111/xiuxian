@@ -7,9 +7,18 @@ import android.os.Bundle;
 
 public class GlobalApplication extends AppCompatActivity {
 
-    private static double exp = 0;
+    private static int exp = 0;
     private static int index = 0;
-    private static double expSpeed = 1.0;
+    private static int[] expSpeed = {1, 2, 2, 2, 3, 3, 4, 4, 5, 5,
+            6, 6, 6, 7, 7, 7, 8, 8, 8, 9,
+            10, 10, 10, 11, 11, 12, 12, 13, 13, 13,
+            14, 15, 15, 15, 15, 16, 16, 17, 17, 18,
+            19, 20, 22, 24, 24, 24, 25, 25, 26, 27,
+            28, 28, 29, 30, 30, 30, 30, 31, 32, 34,
+            34, 36, 37, 38, 39, 39, 39, 39, 39, 40,
+            41, 42, 42, 42, 43, 43, 44, 45, 46, 47,
+            48, 50, 52, 52, 52, 53, 53, 54, 54, 55,
+            57, 57, 58, 58, 59, 59, 60, 60, 61, 62, 63};
     private static String[] level = {"筑基初阶", "筑基二阶", "筑基三阶", "筑基四阶", "筑基五阶", "筑基六阶", "筑基七阶", "筑基八阶","筑基九阶", "筑基巅峰",
             "培元初阶", "培元二阶", "培元三阶", "培元四阶", "培元五阶", "培元六阶", "培元七阶", "培元八阶","培元九阶", "培元巅峰",
             "辟谷初阶", "辟谷二阶", "辟谷三阶", "辟谷四阶", "辟谷五阶", "辟谷六阶", "辟谷七阶", "辟谷八阶","辟谷九阶", "辟谷巅峰",
@@ -20,7 +29,7 @@ public class GlobalApplication extends AppCompatActivity {
             "合体初阶", "合体二阶", "合体三阶", "合体四阶", "合体五阶", "合体六阶", "合体七阶", "合体八阶","合体九阶", "合体巅峰",
             "渡劫初阶", "渡劫二阶", "渡劫三阶", "渡劫四阶", "渡劫五阶", "渡劫六阶", "渡劫七阶", "渡劫八阶","渡劫九阶", "渡劫巅峰",
             "大乘初阶", "大乘二阶", "大乘三阶", "大乘四阶", "大乘五阶", "大乘六阶", "大乘七阶", "大乘八阶","大乘九阶", "大乘巅峰", "散仙初阶"};
-    private static double[] expRequire = {10, 30, 60, 60, 120, 140, 150, 170, 180, 240,
+    private static int[] expRequire = {10, 30, 60, 60, 120, 140, 150, 170, 180, 240,
             270, 300, 330, 350, 370, 390, 410, 450, 470, 500,
             530, 560, 590, 650, 700, 770, 820, 870, 940, 1000,
             1300, 1600, 1800, 2100, 2400, 2400, 2400, 2700, 3000, 3000,
@@ -31,6 +40,9 @@ public class GlobalApplication extends AppCompatActivity {
             13500, 13500, 13900, 14200, 14500, 14800, 14800, 14900, 15000, 15200,
             15300, 15600, 15900, 16200, 16500, 16800, 17100, 17600, 19000, 20000, 50000};
     private static long frozenPeriod = System.currentTimeMillis();
+    private static int hp = 1000;
+    private static int genGu = 0;
+    private static int liDao = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +51,10 @@ public class GlobalApplication extends AppCompatActivity {
 
     }
 
-    public static void setExp(double newExp) {
+    public static void setExp(int newExp) {
         exp = newExp;
     }
-    public static double getExp() {
+    public static int getExp() {
         return exp;
     }
 
@@ -58,12 +70,12 @@ public class GlobalApplication extends AppCompatActivity {
         return index;
     }
 
-    public static double getExpRequire(int index) {
+    public static int getExpRequire(int index) {
         return expRequire[index];
     }
 
-    public static double getExpSpeed() {
-        return expSpeed;
+    public static int getExpSpeed(int index) {
+        return expSpeed[index];
     }
 
     public static String getLevel(int index) {

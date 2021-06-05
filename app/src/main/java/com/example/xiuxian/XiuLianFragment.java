@@ -51,8 +51,11 @@ public class XiuLianFragment extends Fragment {
 
         curIndex = GlobalApplication.getIndex();
         mTvLevel.setText(GlobalApplication.getLevel(curIndex));
-        mTvSpeed.setText((int)GlobalApplication.getExpSpeed() * 60 + " / 分钟");
-
+        if (GlobalApplication.getExpSpeed(GlobalApplication.getIndex()) * 60 >= 10000) {
+            mTvSpeed.setText((GlobalApplication.getExpSpeed(GlobalApplication.getIndex()) * 60 / 10000) + " 万 / 分钟");
+        } else {
+            mTvSpeed.setText((GlobalApplication.getExpSpeed(GlobalApplication.getIndex()) * 60) + " / 分钟");
+        }
         mBtnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +73,18 @@ public class XiuLianFragment extends Fragment {
             public void run() {
                 if(wasRun){
                     curIndex = GlobalApplication.getIndex();
-                    mTvXiulianzhi.setText((int)GlobalApplication.getExp() + " / " + (int)GlobalApplication.getExpRequire(curIndex));
+                    int requireExp = GlobalApplication.getExpRequire(curIndex) * GlobalApplication.getExpSpeed(curIndex);
+                    if (requireExp >= 10000) {
+                        mTvXiulianzhi.setText(GlobalApplication.getExp() + " / " + (requireExp / 10000) + " 万");
+                    } else {
+                        mTvXiulianzhi.setText(GlobalApplication.getExp() + " / " + requireExp);
+                    }
+                    int curExpRequire = GlobalApplication.getExpRequire(GlobalApplication.getIndex()) * GlobalApplication.getExpSpeed(GlobalApplication.getIndex());
+                    if (curIndex < 100 && curExpRequire <= GlobalApplication.getExp()) {
+                        mBtnTupo.setEnabled(true);
+                    } else {
+                        mBtnTupo.setEnabled(false);
+                    }
                 }
                 mHandler.postDelayed(this, 200);
             }
@@ -79,14 +93,19 @@ public class XiuLianFragment extends Fragment {
         mBtnTupo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                double curExpRequire = GlobalApplication.getExpRequire(GlobalApplication.getIndex());
+                int curExpRequire = GlobalApplication.getExpRequire(GlobalApplication.getIndex()) * GlobalApplication.getExpSpeed(GlobalApplication.getIndex());
                 curIndex = GlobalApplication.getIndex();
                 if (curExpRequire <= GlobalApplication.getExp() && curIndex < 100) {
                     curIndex++;
                     GlobalApplication.setIndex(curIndex);
                     GlobalApplication.setExp(GlobalApplication.getExp() - curExpRequire);
                     mTvLevel.setText(GlobalApplication.getLevel(GlobalApplication.getIndex()));
-                    mTvSpeed.setText((int)(GlobalApplication.getExpSpeed() * 60) + " / 分钟");
+                    if (GlobalApplication.getExpSpeed(GlobalApplication.getIndex()) * 60 >= 10000) {
+                        mTvSpeed.setText((GlobalApplication.getExpSpeed(GlobalApplication.getIndex()) * 60 / 10000) + " 万 / 分钟");
+                    } else {
+                        mTvSpeed.setText((GlobalApplication.getExpSpeed(GlobalApplication.getIndex()) * 60) + " / 分钟");
+                    }
+
                 }
             }
         });
